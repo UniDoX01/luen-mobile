@@ -23,7 +23,6 @@ workflows:
   android-apk:
     name: LUÉN — Android APK
     max_build_duration: 60
-    instance_type: linux_x2
     environment:
       flutter: stable
       java: 17
@@ -60,7 +59,7 @@ workflows:
   ios-unsigned-ipa:
     name: LUÉN — iOS unsigned IPA
     max_build_duration: 60
-    instance_type: mac_mini_m2          # cheapest macOS instance, ~7 min build
+    instance_type: mac_mini_m1   # free-tier macOS instance
     environment:
       flutter: stable
       xcode: latest
