@@ -10,6 +10,7 @@ import '../api.dart';
 import '../state.dart';
 import '../theme.dart';
 import '../widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CartTab extends ConsumerWidget {
   const CartTab({super.key});
@@ -59,7 +60,7 @@ class CartTab extends ConsumerWidget {
                           : CachedNetworkImage(imageUrl: p!.mainImage!, fit: BoxFit.cover)),
                     const SizedBox(width: 12),
                     Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      Text(p?.name ?? 'Item', style: const TextStyle(color: LuenColors.foreground, fontSize: 13, fontFamily: GoogleFonts.playfairDisplay().fontFamily)),
+                      Text(p?.name ?? 'Item', style: GoogleFonts.playfairDisplay(color: LuenColors.foreground, fontSize: 13)),
                       const SizedBox(height: 4),
                       Text('Qty ${it.quantity}${it.size != null ? '  ·  Size ${it.size}' : ''}', style: const TextStyle(color: LuenColors.mutedFg, fontSize: 11)),
                     ])),

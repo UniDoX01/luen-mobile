@@ -9,6 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../state.dart';
 import '../theme.dart';
 import '../widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
   const LoginScreen({super.key});
@@ -45,7 +46,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             const SizedBox(height: 8),
             const Center(child: Text('MAISON DE LUXE', style: TextStyle(color: LuenColors.primary, fontSize: 9, letterSpacing: 4))),
             const SizedBox(height: 64),
-            const Text('Welcome back', style: TextStyle(fontFamily: GoogleFonts.playfairDisplay().fontFamily, fontSize: 30, color: LuenColors.foreground)),
+            const Text('Welcome back', style: GoogleFonts.playfairDisplay(fontSize: 30, color: LuenColors.foreground)),
             const SizedBox(height: 4),
             const Text('Sign in to your account', style: TextStyle(color: LuenColors.mutedFg, fontSize: 13)),
             const SizedBox(height: 28),

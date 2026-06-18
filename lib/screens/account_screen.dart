@@ -10,6 +10,7 @@ import '../api.dart';
 import '../state.dart';
 import '../theme.dart';
 import '../widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AccountTab extends ConsumerWidget {
   const AccountTab({super.key});
@@ -27,7 +28,7 @@ class AccountTab extends ConsumerWidget {
           const SizedBox(height: 24),
           const Text('Sign in to your LUÉN account',
             textAlign: TextAlign.center,
-            style: TextStyle(color: LuenColors.foreground, fontSize: 16, fontFamily: GoogleFonts.playfairDisplay().fontFamily)),
+            style: GoogleFonts.playfairDisplay(color: LuenColors.foreground, fontSize: 16)),
           const SizedBox(height: 24),
           ElevatedButton(onPressed: () => context.push('/login'), child: const Text('SIGN IN')),
           const SizedBox(height: 8),
@@ -105,7 +106,7 @@ class _ProfileCard extends StatelessWidget {
           child: const Text('VIP MEMBER', style: TextStyle(color: LuenColors.primary, fontSize: 9, letterSpacing: 3)),
         ),
         if (isVipVisible && user.isVip) const SizedBox(height: 12),
-        Text(user.name ?? user.email, style: const TextStyle(fontFamily: GoogleFonts.playfairDisplay().fontFamily, fontSize: 22, color: LuenColors.foreground)),
+        Text(user.name ?? user.email, style: GoogleFonts.playfairDisplay(fontSize: 22, color: LuenColors.foreground)),
         const SizedBox(height: 4),
         Text(user.email, style: const TextStyle(color: LuenColors.mutedFg, fontSize: 12)),
         if (user.totalSpent > 0) ...[

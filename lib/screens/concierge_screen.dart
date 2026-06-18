@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../state.dart';
 import '../theme.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class _Msg {
   final String role; // 'user' | 'agent'
@@ -88,7 +89,7 @@ class _ConciergeTabState extends ConsumerState<ConciergeTab> {
         decoration: const BoxDecoration(border: Border(bottom: BorderSide(color: LuenColors.border))),
         child: Row(children: [
           Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text(_header, style: const TextStyle(fontFamily: GoogleFonts.playfairDisplay().fontFamily, fontSize: 18, color: LuenColors.foreground)),
+            Text(_header, style: GoogleFonts.playfairDisplay(fontSize: 18, color: LuenColors.foreground)),
             const SizedBox(height: 2),
             Text(_aiEnabled ? 'LIVE · AI-ASSISTED' : 'LIVE · PRE-SET RESPONSES',
               style: const TextStyle(color: LuenColors.primary, fontSize: 9, letterSpacing: 3)),

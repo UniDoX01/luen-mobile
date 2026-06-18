@@ -8,6 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../state.dart';
 import '../theme.dart';
 import '../widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -37,7 +38,7 @@ class MaintenanceScreen extends ConsumerWidget {
             const SizedBox(height: 24),
             Text(cfg?.maintenanceTitle ?? 'We will be right back',
               textAlign: TextAlign.center,
-              style: const TextStyle(fontFamily: GoogleFonts.playfairDisplay().fontFamily, fontSize: 26, color: LuenColors.foreground)),
+              style: GoogleFonts.playfairDisplay(fontSize: 26, color: LuenColors.foreground)),
             const SizedBox(height: 12),
             Text(cfg?.maintenanceMessage ?? '',
               textAlign: TextAlign.center,
@@ -66,7 +67,7 @@ class ForceUpdateScreen extends ConsumerWidget {
             const SizedBox(height: 24),
             const Text('A new edition is required',
               textAlign: TextAlign.center,
-              style: TextStyle(fontFamily: GoogleFonts.playfairDisplay().fontFamily, fontSize: 26, color: LuenColors.foreground)),
+              style: GoogleFonts.playfairDisplay(fontSize: 26, color: LuenColors.foreground)),
             const SizedBox(height: 12),
             const Text(
               'Please update LUÉN to continue. This release contains required improvements.',

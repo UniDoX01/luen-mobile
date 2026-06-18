@@ -5,13 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'api.dart';
 import 'theme.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 /// Tiny brand wordmark in the app bar.
 class LuenWordmark extends StatelessWidget {
   const LuenWordmark({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Text('LUÉN', style: TextStyle(fontFamily: GoogleFonts.playfairDisplay().fontFamily, fontSize: 22, letterSpacing: 8.0, color: LuenColors.foreground));
+    return const Text('LUÉN', style: GoogleFonts.playfairDisplay(fontSize: 22, letterSpacing: 8.0, color: LuenColors.foreground));
   }
 }
 
@@ -44,7 +45,7 @@ class ProductCard extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(product.name, maxLines: 2, overflow: TextOverflow.ellipsis,
-            style: const TextStyle(fontFamily: GoogleFonts.playfairDisplay().fontFamily, fontSize: 14, color: LuenColors.foreground)),
+            style: GoogleFonts.playfairDisplay(fontSize: 14, color: LuenColors.foreground)),
           const SizedBox(height: 2),
           Row(children: [
             if (product.salePrice != null) ...[
@@ -72,7 +73,7 @@ class LuenSectionTitle extends StatelessWidget {
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         if (subtitle != null) Text(subtitle!.toUpperCase(), style: const TextStyle(color: LuenColors.primary, fontSize: 10, letterSpacing: 4.0)),
         if (subtitle != null) const SizedBox(height: 6),
-        Text(title, style: const TextStyle(fontFamily: GoogleFonts.playfairDisplay().fontFamily, fontSize: 26, color: LuenColors.foreground)),
+        Text(title, style: GoogleFonts.playfairDisplay(fontSize: 26, color: LuenColors.foreground)),
       ]),
     );
   }

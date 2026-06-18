@@ -9,6 +9,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../state.dart';
 import '../theme.dart';
 import '../widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomeTab extends ConsumerWidget {
   const HomeTab({super.key});
@@ -32,7 +33,7 @@ class HomeTab extends ConsumerWidget {
           const SizedBox(height: 12),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24),
-            child: Text('LUÉN', style: TextStyle(fontFamily: GoogleFonts.playfairDisplay().fontFamily, fontSize: 56, letterSpacing: 4.0, color: LuenColors.foreground)),
+            child: Text('LUÉN', style: GoogleFonts.playfairDisplay(fontSize: 56, letterSpacing: 4.0, color: LuenColors.foreground)),
           ),
           const SizedBox(height: 8),
           const Padding(

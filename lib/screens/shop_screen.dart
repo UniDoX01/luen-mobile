@@ -9,6 +9,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import '../state.dart';
 import '../theme.dart';
 import '../widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 const _categories = ['all', 'outerwear', 'knitwear', 'shirts', 'denim', 'accessories'];
 
@@ -122,7 +123,7 @@ class _ProductDetailScreenState extends ConsumerState<ProductDetailScreen> {
                   if (p.category != null)
                     Text(p.category!.toUpperCase(), style: const TextStyle(color: LuenColors.primary, fontSize: 10, letterSpacing: 4.0)),
                   const SizedBox(height: 8),
-                  Text(p.name, style: const TextStyle(fontFamily: GoogleFonts.playfairDisplay().fontFamily, fontSize: 28, color: LuenColors.foreground)),
+                  Text(p.name, style: GoogleFonts.playfairDisplay(fontSize: 28, color: LuenColors.foreground)),
                   const SizedBox(height: 8),
                   Row(children: [
                     if (p.salePrice != null) ...[
