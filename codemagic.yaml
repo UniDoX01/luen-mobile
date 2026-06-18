@@ -1,0 +1,97 @@
+###############################################################################
+# Codemagic CI/CD — LUÉN Mobile
+#
+# Builds the Android APK + an UNSIGNED iOS IPA on every push. Both artifacts
+# are emailed/downloaded straight from the Codemagic dashboard.
+#
+# Free tier: 500 macOS-minutes/month + unlimited Linux minutes.
+# Setup:
+#   1. Push ~/luen-mobile/ to a GitHub repo (private is fine)
+#   2. Sign up at https://codemagic.io (free, GitHub OAuth)
+#   3. Add the repo as a new application
+#   4. Codemagic auto-detects this file. Click "Start new build"
+#   5. Download artifacts:
+#        - app-release.apk        → install on Android via "Unknown sources"
+#        - Runner-unsigned.ipa    → drop into AltStore / Sideloadly + your free Apple ID
+###############################################################################
+
+workflows:
+
+  ###--------------------------------------------------------------------------
+  ### ANDROID — Release APK, debug-signed (sideloadable, no Play account needed)
+  ###--------------------------------------------------------------------------
+  android-apk:
+    name: LUÉN — Android APK
+    max_build_duration: 60
+    instance_type: linux_x2
+    environment:
+      flutter: stable
+      java: 17
+    cache:
+      cache_paths:
+        - ~/.gradle/caches
+        - ~/.pub-cache
+    scripts:
+      - name: Flutter pub get
+        script: flutter pub get
+      - name: Flutter analyze (non-blocking)
+        script: flutter analyze || true
+      - name: Build APK
+        script: |
+          flutter build apk --release \
+            --no-tree-shake-icons \
+            --build-name=$(grep -m1 'version:' pubspec.yaml | awk '{print $2}' | cut -d+ -f1) \
+            --build-number=${BUILD_NUMBER:-1}
+    artifacts:
+      - build/**/outputs/**/*.apk
+      - build/**/outputs/**/mapping.txt
+    publishing:
+      email:
+        recipients:
+          - norsksikkerhet@icloud.com   # ← edit if you want a different inbox
+        notify:
+          success: true
+          failure: true
+
+  ###--------------------------------------------------------------------------
+  ### IOS — UNSIGNED IPA for AltStore / Sideloadly
+  ### No Apple Developer Program required ($99 NOT needed for this flow).
+  ###--------------------------------------------------------------------------
+  ios-unsigned-ipa:
+    name: LUÉN — iOS unsigned IPA
+    max_build_duration: 60
+    instance_type: mac_mini_m2          # cheapest macOS instance, ~7 min build
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+    cache:
+      cache_paths:
+        - ~/.pub-cache
+        - ios/Pods
+    scripts:
+      - name: Flutter pub get
+        script: flutter pub get
+      - name: CocoaPods install
+        script: |
+          cd ios
+          pod install
+      - name: Build unsigned iOS .app
+        script: |
+          flutter build ios --release --no-codesign --no-tree-shake-icons
+      - name: Repackage .app → .ipa
+        script: |
+          mkdir -p build/ios/ipa/Payload
+          cp -r build/ios/iphoneos/Runner.app build/ios/ipa/Payload/
+          cd build/ios/ipa
+          zip -qr Runner-unsigned.ipa Payload
+          ls -la Runner-unsigned.ipa
+    artifacts:
+      - build/ios/ipa/Runner-unsigned.ipa
+    publishing:
+      email:
+        recipients:
+          - norsksikkerhet@icloud.com
+        notify:
+          success: true
+          failure: true
