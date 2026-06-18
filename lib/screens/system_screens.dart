@@ -65,7 +65,7 @@ class ForceUpdateScreen extends ConsumerWidget {
             const SizedBox(height: 48),
             const Icon(Icons.system_update_alt, color: LuenColors.primary, size: 40),
             const SizedBox(height: 24),
-            const Text('A new edition is required',
+            Text('A new edition is required',
               textAlign: TextAlign.center,
               style: GoogleFonts.playfairDisplay(fontSize: 26, color: LuenColors.foreground)),
             const SizedBox(height: 12),

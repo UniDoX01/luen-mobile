@@ -31,8 +31,8 @@ class HomeTab extends ConsumerWidget {
             child: Text('NEW COLLECTION 2026', style: TextStyle(color: LuenColors.primary, fontSize: 10, letterSpacing: 6.0)),
           ),
           const SizedBox(height: 12),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Text('LUÉN', style: GoogleFonts.playfairDisplay(fontSize: 56, letterSpacing: 4.0, color: LuenColors.foreground)),
           ),
           const SizedBox(height: 8),

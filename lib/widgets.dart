@@ -12,7 +12,7 @@ class LuenWordmark extends StatelessWidget {
   const LuenWordmark({super.key});
   @override
   Widget build(BuildContext context) {
-    return const Text('LUÉN', style: GoogleFonts.playfairDisplay(fontSize: 22, letterSpacing: 8.0, color: LuenColors.foreground));
+    return Text('LUÉN', style: GoogleFonts.playfairDisplay(fontSize: 22, letterSpacing: 8.0, color: LuenColors.foreground));
   }
 }
 

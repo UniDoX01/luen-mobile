@@ -46,7 +46,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             const SizedBox(height: 8),
             const Center(child: Text('MAISON DE LUXE', style: TextStyle(color: LuenColors.primary, fontSize: 9, letterSpacing: 4))),
             const SizedBox(height: 64),
-            const Text('Welcome back', style: GoogleFonts.playfairDisplay(fontSize: 30, color: LuenColors.foreground)),
+            Text('Welcome back', style: GoogleFonts.playfairDisplay(fontSize: 30, color: LuenColors.foreground)),
             const SizedBox(height: 4),
             const Text('Sign in to your account', style: TextStyle(color: LuenColors.mutedFg, fontSize: 13)),
             const SizedBox(height: 28),

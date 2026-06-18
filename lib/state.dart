@@ -59,11 +59,11 @@ class AuthState {
 
 class AuthController extends StateNotifier<AuthState> {
   AuthController(this._api) : super(const AuthState(loading: true)) {
-    _bootstrap();
+    refresh();
   }
   final LuenApi _api;
 
-  Future<void> _bootstrap() async {
+  Future<void> refresh() async {
     try {
       final token = await TokenStore.read();
       if (token == null) { state = const AuthState(); return; }

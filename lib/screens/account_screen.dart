@@ -26,7 +26,7 @@ class AccountTab extends ConsumerWidget {
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           const LuenWordmark(),
           const SizedBox(height: 24),
-          const Text('Sign in to your LUÉN account',
+          Text('Sign in to your LUÉN account',
             textAlign: TextAlign.center,
             style: GoogleFonts.playfairDisplay(color: LuenColors.foreground, fontSize: 16)),
           const SizedBox(height: 24),
@@ -45,7 +45,7 @@ class AccountTab extends ConsumerWidget {
     return RefreshIndicator(
       onRefresh: () async {
         ref.invalidate(ordersProvider);
-        await ref.read(authProvider.notifier)._bootstrap();
+        await ref.read(authProvider.notifier).refresh();
       },
       color: LuenColors.primary,
       child: ListView(padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24), children: [
